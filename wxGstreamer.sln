@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wxGstreamer", "wxGstreamer\wxGstreamer.vcxproj", "{2B8024C1-A516-487E-B7F1-16E02D87FEF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B8024C1-A516-487E-B7F1-16E02D87FEF3}.Debug|x64.ActiveCfg = Debug|x64
+		{2B8024C1-A516-487E-B7F1-16E02D87FEF3}.Debug|x64.Build.0 = Debug|x64
+		{2B8024C1-A516-487E-B7F1-16E02D87FEF3}.Debug|x86.ActiveCfg = Debug|Win32
+		{2B8024C1-A516-487E-B7F1-16E02D87FEF3}.Debug|x86.Build.0 = Debug|Win32
+		{2B8024C1-A516-487E-B7F1-16E02D87FEF3}.Release|x64.ActiveCfg = Release|x64
+		{2B8024C1-A516-487E-B7F1-16E02D87FEF3}.Release|x64.Build.0 = Release|x64
+		{2B8024C1-A516-487E-B7F1-16E02D87FEF3}.Release|x86.ActiveCfg = Release|Win32
+		{2B8024C1-A516-487E-B7F1-16E02D87FEF3}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CEF0DC8B-EC0E-46A4-9E63-B03319754793}
+	EndGlobalSection
+EndGlobal
