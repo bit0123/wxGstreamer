@@ -22,6 +22,5 @@ private:
 	static GstBusSyncReply bus_sync_handler(GstBus *bus, GstMessage *message, GstMPlayer *player);
 
 	HWND vidOutputContainer;
-	GstElement *pipeline;
 	GstElement *playbin;
 };

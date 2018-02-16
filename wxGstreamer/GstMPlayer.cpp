@@ -1,7 +1,7 @@
 #include "GstMPlayer.h"
 #include <Windows.h>
 
-GstMPlayer::GstMPlayer(HWND wnd) : vidOutputContainer(wnd), pipeline(NULL), playbin(NULL)
+GstMPlayer::GstMPlayer(HWND wnd) : vidOutputContainer(wnd), playbin(NULL)
 {
 	gst_init(0, NULL);
 
@@ -10,18 +10,15 @@ GstMPlayer::GstMPlayer(HWND wnd) : vidOutputContainer(wnd), pipeline(NULL), play
 
 bool GstMPlayer::CreatePipeline()
 {
-	pipeline = gst_pipeline_new(NULL);
 	playbin = gst_element_factory_make("playbin", NULL);
-	gst_bin_add(GST_BIN(pipeline), playbin);
 
 	// 1st way to directly set the render surface (window)
 	if(vidOutputContainer != nullptr)
 		gst_video_overlay_set_window_handle(GST_VIDEO_OVERLAY(playbin), (guintptr)vidOutputContainer);
 
 	// 2nd way to set handler video overlay
-	/*GstBus *bus = gst_element_get_bus(pipeline);
-	gst_bus_enable_sync_message_emission(bus);
-	gst_bus_set_sync_handler(bus, (GstBusSyncHandler) bus_sync_handler, this, NULL);*/
+	//GstBus *bus = gst_element_get_bus(playbin);
+	//gst_bus_set_sync_handler(bus, (GstBusSyncHandler) bus_sync_handler, this, NULL);
 	
 	return true;
 }
@@ -53,10 +50,7 @@ bool GstMPlayer::LoadLocalFile(std::string path)
 		return false;
 	}
 	g_object_set(G_OBJECT(playbin), "uri", uri, NULL);
-
-	if (vidOutputContainer != nullptr)
-		gst_video_overlay_set_window_handle(GST_VIDEO_OVERLAY(playbin), (guintptr)vidOutputContainer);
-
+	
 	return true;
 }
 
@@ -77,7 +71,7 @@ bool GstMPlayer::Stop()
 
 bool GstMPlayer::ChangePlaybinState(GstState state)
 {
-	GstStateChangeReturn m_Ret = gst_element_set_state(pipeline, state);
+	GstStateChangeReturn m_Ret = gst_element_set_state(playbin, state);
 
 	switch (m_Ret) {
 	case GST_STATE_CHANGE_FAILURE:
@@ -90,6 +84,6 @@ bool GstMPlayer::ChangePlaybinState(GstState state)
 
 GstMPlayer::~GstMPlayer()
 {
-	gst_element_set_state(pipeline, GST_STATE_NULL);
-	gst_object_unref(GST_OBJECT(pipeline));
+	gst_element_set_state(playbin, GST_STATE_NULL);
+	gst_object_unref(GST_OBJECT(playbin));
 }
